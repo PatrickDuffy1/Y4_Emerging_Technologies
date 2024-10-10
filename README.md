@@ -9,10 +9,10 @@
 * Install Jupyter Lab by running the following command in the terminal
 `pip install jupyterlab`
 
+* Navigate to the cloned repo in the terminal
+
 * Run Jupyter Lab by running the following command in the terminal
 `jupyter lab`
-
-* In the Jupyter Lab navigate to the cloned repo and open it
 
 * Run the program
 
