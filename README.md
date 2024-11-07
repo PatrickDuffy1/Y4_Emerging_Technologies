@@ -29,3 +29,7 @@ It does this by taking a two character sequence, and finding all of the three ch
 * Finally the program outputs the trigram model as JSON to a JSON file.
 ---
 ## Eliza Chatbot Program
+
+### Program Description
+
+ELIZA is an early natural language processing computer program developed from 1964 to 1967 at MIT by Joseph Weizenbaum. This is an implementation of that program using HTML and CSS for the interface and plain JavaScript for the chatbot logic and will be deployed to GitHub Pages.
