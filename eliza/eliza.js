@@ -65,9 +65,98 @@ class Eliza
             "are": "am",
         };
     }
+
+    respond(userInput)
+    {
+        userInput = userInput.toLowerCase();
+        
+        // Get all possible responses
+        // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys
+        let responseInputs = Object.keys(this.responses);
+        
+        for(let i = 0; i < responseInputs.length; i++)
+        {
+            // Create RegExp string from current responseInputs.
+            // Use 'i' for case-insensitive matching
+            // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp
+            let regexString = new RegExp(responseInputs[i], 'i');
+
+            // Find if there was a match
+            // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match
+            let match = userInput.match(regexString);
+
+            if(match != null)
+            {
+                let possibleResponses = this.responses[responseInputs[i]];
+
+                // Chose a random response from the possible responses
+                let response = possibleResponses[Math.round(Math.random() * (possibleResponses.length - 1))];
+
+                // Replace placeholders in the response with matched groups (if there is any)
+                for (let j = 1; j < match.length; j++) 
+                {
+                    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace
+                    response = response.replace(`$${j}`, this.reflect(match[j]));
+                }
+
+                return response;
+            }
+        }
+
+        return "Can you tell me more?";
+    }
+
+    // Reflect user inputs
+    reflect(sentence)
+    {
+        // Split sentence into individual words
+        // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split
+        let words = sentence.split();
+
+        // Deep copy of words
+        // https://developer.mozilla.org/en-US/docs/Web/API/WorkerGlobalScope/structuredClone
+        let finalWords = structuredClone(words);
+
+        let newSentences = [];
+        let finalSentence = "";
+
+        // Create a new sentence for each of the possible reflections
+        Object.keys(this.reflections).forEach(key => 
+        {
+            newSentences.push(sentence.replace(key, this.reflections[key]));
+        });
+
+        // For each new sentence, compare each word to the words in the original sentence.
+        // If a word is different, add it to the final senetnce words array
+        newSentences.forEach(newSentence => 
+        {
+            let newWords = newSentence.split();
+
+            for(let i = 0; i < words.length; i++)
+            {
+                if(words[i] != newWords[i])
+                {
+                    finalWords[i] = newWords[i];
+                }
+            }
+        });
+
+        // Convert the final words into a single sentence
+        for(let i = 0; i < finalWords.length; i++)
+        {
+            finalSentence += finalWords[i];
+
+            if(i < finalWords.length - 1)
+            {
+                finalSentence += " ";
+            }
+        }
+
+        return finalSentence;
+    }
 }
 
 let eliza = new Eliza();
 
-console.log(eliza.responses);
-console.log(eliza.reflections);
+console.log(eliza.respond("I feel sad because my relative died"));
+console.log(eliza.respond("bye"));
