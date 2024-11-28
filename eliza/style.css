@@ -1,0 +1,118 @@
+/* Code adapted from:
+    https://chatgpt.com/share/674849d7-1b60-800d-9980-e38bdb7d293c 
+ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+  }
+  
+  .chat-container {
+    background-color: white;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 100%;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    overflow: hidden;
+  }
+  
+  h1 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .chat-box {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    flex-grow: 1;
+    overflow-y: auto;
+    margin-bottom: 10px;
+  }
+  
+  .messages {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .user-message, .eliza-message {
+    max-width: 70%;
+    padding: 10px;
+    border-radius: 10px;
+  }
+  
+  .user-message {
+    background-color: #c8e6c9;
+    align-self: flex-end;
+  }
+  
+  .eliza-message {
+    background-color: #9cceeb;
+    align-self: flex-start;
+  }
+  
+  .user-input {
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    width: calc(100% - 10px);
+  }
+  
+  .send-btn {
+    padding: 10px 20px;
+    background-color: #009688;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .send-btn:hover {
+    background-color: #00796b;
+  }
+  
+  /* New section to ensure input and button are fixed at the bottom */
+  .fixed-bottom {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+    width: 400px;
+    padding: 10px;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .fixed-bottom input {
+    width: calc(100% - 90px); /* Make the input field smaller to fit beside the button */
+  }
+  
+  .fixed-bottom button {
+    width: 80px;
+  }
+  

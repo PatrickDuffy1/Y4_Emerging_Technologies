@@ -158,5 +158,50 @@ class Eliza
 
 let eliza = new Eliza();
 
-console.log(eliza.respond("I feel sad because my relative died"));
-console.log(eliza.respond("bye"));
+// Function to handle user input and Eliza's response
+function sendMessage()
+{
+    const userInput = document.getElementById("user-input").value;
+
+    // Return if the user message is empty
+    if (userInput.trim() === "")
+    { 
+        return;
+    }
+
+    // Display user message
+    displayMessage(userInput, "user");
+
+    // Get Eliza's response
+    const elizaResponse = eliza.respond(userInput);
+    displayMessage(elizaResponse, "eliza");
+
+    // Clear the input field
+    document.getElementById("user-input").value = "";
+}
+
+// Function to display messages in the chat window
+function displayMessage(message, sender) 
+{
+    const messagesDiv = document.getElementById("messages");
+    const messageElement = document.createElement("div");
+
+    // Set the class based on the sender
+    messageElement.classList.add(sender === "user" ? "user-message" : "eliza-message");
+
+    messageElement.textContent = message;
+    messagesDiv.appendChild(messageElement);
+
+    // Scroll to the latest message
+    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+}
+
+// Detect Enter key press in the user input field and call sendMessage
+document.getElementById('user-input').addEventListener('keydown', function(event) 
+{
+    // Check if the pressed key was the Enter key
+    if (event.key === 'Enter') 
+    {
+      sendMessage();
+    }
+});

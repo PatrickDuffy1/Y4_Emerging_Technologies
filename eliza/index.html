@@ -1,11 +1,30 @@
+<!-- Code adapted from:
+     https://chatgpt.com/share/674849d7-1b60-800d-9980-e38bdb7d293c 
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eliza Chatbot</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eliza Chatbot</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <script src="eliza.js"></script>
+
+  <div class="chat-container">
+    <h1>Eliza Chatbot</h1>
+    <div class="chat-box">
+      <div class="messages" id="messages">
+        <!-- The messages will be displayed here -->
+      </div>
+    </div>
+    
+    <input type="text" id="user-input" class="user-input" placeholder="Type your message..." autofocus>
+    <button onclick="sendMessage()" class="send-btn">Send</button>
+  </div>
+
+  <script src="eliza.js"></script>
+
 </body>
 </html>
