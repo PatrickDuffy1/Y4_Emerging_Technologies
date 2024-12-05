@@ -31,6 +31,20 @@ class Eliza
                 "Is $1 something you feel you can't live without?",
                 "What happens if you don’t get $1?"
             ],
+            'I feel (.*)': [
+                "Why do you feel $1?",
+                "Does feeling $1 happen often?",
+                "How does that feeling affect you?",
+                "What triggered this feeling in you?",
+                "What would make you feel differently?"
+            ],
+            'I am (.*)': [
+                "Why do you think you are $1?",
+                "How long have you felt that way?",
+                "What made you feel like $1?",
+                "Do you feel that way often?",
+                "How would you like to feel instead?"
+            ],
             '(.*) sorry|apologize(.*)': [
                 "No need to apologize.",
                 "Apologies aren't necessary. Why do you feel that way?",
@@ -66,7 +80,7 @@ class Eliza
                 "Do you feel close to your friends?",
                 "What qualities do you appreciate in your friends?"
             ],
-            '(.*) (happy|sad|angry)(.*)': [
+            '(happy|sad|angry)(.*)': [
                 "What do you think makes you feel $1?",
                 "Can you think of a time when you felt $1?",
                 "Does feeling $1 happen often for you?",
@@ -141,20 +155,6 @@ class Eliza
                 "Why do you fear $2?",
                 "How does this fear affect you?",
                 "What would help you overcome your fear of $2?"
-            ],
-            'I feel (.*)': [
-                "Why do you feel $1?",
-                "Does feeling $1 happen often?",
-                "How does that feeling affect you?",
-                "What triggered this feeling in you?",
-                "What would make you feel differently?"
-            ],
-            'I am (.*)': [
-                "Why do you think you are $1?",
-                "How long have you felt that way?",
-                "What made you feel like $1?",
-                "Do you feel that way often?",
-                "How would you like to feel instead?"
             ],
             '(.*)': [
                 "Can you tell me more?",
@@ -241,7 +241,7 @@ class Eliza
         // Create a new sentence for each of the possible reflections
         Object.keys(this.reflections).forEach(key => 
         {
-            newSentences.push(sentence.replace(" " + key + " ", " " + this.reflections[key] + " "));
+            newSentences.push(sentence.replace( key, this.reflections[key]));
         });
 
         // For each new sentence, compare each word to the words in the original sentence.
