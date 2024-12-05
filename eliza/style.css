@@ -27,9 +27,9 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
-    overflow: hidden;
-  }
+    height: 100%;
+}
+
   
   h1 {
     text-align: center;
@@ -38,14 +38,17 @@
   }
   
   .chat-box {
+    height: 100%;
     background-color: #f9f9f9;
     border: 1px solid #ddd;
     border-radius: 5px;
     padding: 10px;
-    flex-grow: 1;
     overflow-y: auto;
     margin-bottom: 10px;
-  }
+    display: flex;
+    flex-direction: column-reverse;
+}
+
   
   .messages {
     display: flex;
@@ -92,7 +95,7 @@
     background-color: #00796b;
   }
   
-  /* New section to ensure input and button are fixed at the bottom */
+  /* Ensure input and button are fixed at the bottom */
   .fixed-bottom {
     position: fixed;
     bottom: 0;
@@ -109,7 +112,7 @@
   }
   
   .fixed-bottom input {
-    width: calc(100% - 90px); /* Make the input field smaller to fit beside the button */
+    width: calc(100% - 90px);
   }
   
   .fixed-bottom button {

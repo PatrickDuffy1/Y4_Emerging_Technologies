@@ -310,7 +310,6 @@ function displayMessage(message, sender)
     messageElement.textContent = message;
     messagesDiv.appendChild(messageElement);
 
-    // Scroll to the latest message
     messagesDiv.scrollTop = messagesDiv.scrollHeight;
 }
 
