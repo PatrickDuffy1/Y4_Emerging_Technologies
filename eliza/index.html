@@ -1,30 +1,42 @@
 <!-- Code adapted from:
      https://chatgpt.com/share/674849d7-1b60-800d-9980-e38bdb7d293c 
 -->
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Eliza Chatbot</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
 
-  <div class="chat-container">
-    <h1>Eliza Chatbot</h1>
-    <div class="chat-box">
-      <div class="messages" id="messages">
-        <!-- The messages will be displayed here -->
-      </div>
-    </div>
-    
-    <input type="text" id="user-input" class="user-input" placeholder="Type your message..." autofocus>
-    <button onclick="sendMessage()" class="send-btn">Send</button>
-  </div>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Eliza Chatbot</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
 
-  <script src="eliza.js"></script>
+    <body>
 
-</body>
+        <div class="chat-container">
+            <h1>Eliza Chatbot</h1>
+            <div class="chat-box">
+                <div class="messages" id="messages">
+                    <!-- The messages will be displayed here -->
+                </div>
+            </div>
+
+            <input type="text" id="user-input" class="user-input" placeholder="Type your message..." autofocus>
+            <button onclick="sendMessage()" class="send-btn">Send</button>
+
+            <!-- Button to show information about Eliza -->
+            <button onclick="toggleElizaInfo()" class="info-btn">About Eliza</button>
+
+            <!-- Div to display information about Eliza -->
+            <div id="eliza-info" class="eliza-info" style="display: none;">
+                <h3>About Eliza</h3>
+                <p>ELIZA is an early natural language processing computer program developed from 1964 to 1967 at MIT by Joseph Weizenbaum. This is an implementation of that program using HTML and CSS for the interface and plain JavaScript for the chatbot logic and is also deployed to GitHub Pages.</p>
+                <p>The ELIZA chatbot uses a simple set of predefined rules to simulate a conversation. It can interpret user input and respond with pre-programmed responses based on keywords or patterns in the user's messages. The bot is designed to imitate a Rogerian therapist, offering empathetic and reflective replies.</p>
+            </div>
+        </div>
+
+        <script src="eliza.js"></script>
+
+    </body>
+
 </html>

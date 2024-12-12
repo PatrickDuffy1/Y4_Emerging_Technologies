@@ -322,3 +322,19 @@ document.getElementById('user-input').addEventListener('keydown', function(event
       sendMessage();
     }
 });
+
+// Function to toggle the visibility of the information about Eliza
+function toggleElizaInfo() 
+{
+    const elizaInfo = document.getElementById("eliza-info");
+
+    // Toggle display property
+    if (elizaInfo.style.display === "none") 
+    {
+      elizaInfo.style.display = "block";
+    } 
+    else 
+    {
+      elizaInfo.style.display = "none";
+    }
+}
